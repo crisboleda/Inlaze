@@ -2,14 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { RoleRepository } from '../../domain/repositories/roleRepository.interface';
-import { Role } from 'src/domain/models/role.model';
 import { Role as RoleEntity } from '../entities/role.entity';
+import { Role } from '../../domain/models/role.model';
 
 @Injectable()
 export class DatabaseRoleRepository implements RoleRepository {
   constructor(
     @InjectRepository(RoleEntity)
-    private readonly roleEntityRepository: Repository<Role>,
+    private readonly roleEntityRepository: Repository<RoleEntity>,
   ) {}
 
   private convertToRoleEntity(role: Role): RoleEntity {
